@@ -1,5 +1,6 @@
 <template>
   <Navbar/>
+  <Event :text ="text"/>
   <h1>영화정보</h1>
   <div v-for="(movie, i) in data" :key="i" class="item">
     <figure>
@@ -31,7 +32,7 @@
 <script>
 import data from './assets/movies';
 import Navbar from './components/Navbar.vue';
-
+import Event from './components/Event.vue';
 
   export default {
     name: 'App',
@@ -39,7 +40,8 @@ import Navbar from './components/Navbar.vue';
       return {
         isModal: false,
         data: data,
-        selectedMovie: 0
+        selectedMovie: 0,
+        text:"NEPLIX 강렬한 운명의 드라마, 경기크리처"
       }
     },
     methods: {
@@ -49,6 +51,7 @@ import Navbar from './components/Navbar.vue';
     },
     components: {
       Navbar: Navbar,
+      Event: Event,
     }
   }
 </script>
