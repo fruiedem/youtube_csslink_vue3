@@ -1,5 +1,11 @@
 <template>
   <Navbar/>
+  <Modal 
+    :isModal="isModal" 
+    :selectedMovie="selectedMovie" 
+    :data="data" 
+    @closeModal="isModal=false"
+  />
   <Event :text ="text"/>
   <h1>영화정보</h1>
   <div v-for="(movie, i) in data" :key="i" class="item">
@@ -16,16 +22,7 @@
         <button @:click="isModal=true; selectedMovie=i">상세보기</button>
       </p>
     </div>
-
-  </div>
-  <!-- 모달창 추가 -->
-  <div class="modal" v-if="isModal">
-    <div class="inner">
-      <h3>{{ data[selectedMovie].title }}</h3>
-      <p>영화 상세정보</p>
-      <p> {{ data[selectedMovie].details }}</p>
-      <button @:click="isModal=false">닫기</button>
-    </div>
+    
   </div>
 </template>
 
@@ -33,7 +30,7 @@
 import data from './assets/movies';
 import Navbar from './components/Navbar.vue';
 import Event from './components/Event.vue';
-
+import Modal from './components/Modal.vue';
   export default {
     name: 'App',
     data() {
@@ -41,7 +38,7 @@ import Event from './components/Event.vue';
         isModal: false,
         data: data,
         selectedMovie: 0,
-        text:"NEPLIX 강렬한 운명의 드라마, 경기크리처"
+        text:"NEPLIX 강렬한 운명의 드라마, 경기크리처",
       }
     },
     methods: {
@@ -52,6 +49,7 @@ import Event from './components/Event.vue';
     components: {
       Navbar: Navbar,
       Event: Event,
+      Modal: Modal,
     }
   }
 </script>
