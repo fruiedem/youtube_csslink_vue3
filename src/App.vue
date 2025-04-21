@@ -1,4 +1,5 @@
 <template>
+  <Navbar/>
   <h1>영화정보</h1>
   <div v-for="(movie, i) in data" :key="i" class="item">
     <figure>
@@ -29,7 +30,9 @@
 
 <script>
 import data from './assets/movies';
-console.log(data);
+import Navbar from './components/Navbar.vue';
+
+
   export default {
     name: 'App',
     data() {
@@ -43,6 +46,9 @@ console.log(data);
       increaseLike(i) {
         this.data[i].like += 1;
       }
+    },
+    components: {
+      Navbar: Navbar,
     }
   }
 </script>
